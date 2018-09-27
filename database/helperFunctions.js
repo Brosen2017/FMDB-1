@@ -7,8 +7,9 @@ var faker = require('faker');
 // //initialize data in databse - only run once
 
 var addDataToDatabase = function() {
-  for (var i = 0; i < 120; i++) {
-    //console.log(input[i]["Title"]);
+  //change the number in here to 10mil when you acheive fast write speed
+  for (var i = 0; i < 1000; i++) {
+    console.log(i);
     new Movies({
       Title: faker.random.words(5),
       Year: faker.date.past(),
@@ -36,7 +37,7 @@ var addDataToDatabase = function() {
     })
       .save()
       .then(() => {
-        console.log("saved to db");
+        //console.log("saved to db");
       })
       .catch(err => {
         console.log("there was an error", err);
