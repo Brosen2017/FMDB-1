@@ -1,11 +1,13 @@
 var Movies = require("../database/database.js");
+//var Movies = require("../database/dataTest.js");
 
 module.exports = {
   get: (req, res) => {
-    // console.log(req);
-    title = req.body;
+    //console.log(req.params.id);
+    // title = req.body;
     Movies.find({ movie_id: req.params.id })
       .then(data => {
+        //console.log('this is the data', data)
         res.send(data);
       })
       .catch(err => {

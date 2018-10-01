@@ -1,48 +1,51 @@
-// var Movies = require("./database.js");
-// var myData = require("./movieData.js");
-// var mongoose = require("mongoose");
+var Movies = require("./database.js");
+var myData = require("./movieData.js");
+var mongoose = require("mongoose");
+var faker = require('faker');
 
-// // var myData = JSON.stringify(myData);
+ //myData = JSON.stringify(myData);
 // //initialize data in databse - only run once
 
-// var addDataToDatabase = function(input) {
-//   for (var i = 0; i < input.length; i++) {
-//     //console.log(input[i]["Title"]);
-//     new Movies({
-//       Title: input[i].Title,
-//       Year: input[i]["Year"],
-//       imdbID: input[i]["imdbID"],
-//       Type: input[i]["Type"],
-//       Poster: input[i]["Poster"],
-//       review_average: input[i]["review_average"],
-//       review_count: input[i]["review_count"],
-//       extra_images: input[i]["extra_images"],
-//       director: input[i]["director"],
-//       writer: input[i]["writer"],
-//       release_date: input[i]["release_date"],
-//       movie_length: input[i]["movie_length"],
-//       movie_rating: input[i]["movie_rating"],
-//       actor_info: input[i]["actor_info"],
-//       movie_genre: input[i]["movie_genre"],
-//       review_date: input[i]["review_date"],
-//       reviewer: input[i]["reviewer"],
-//       review_title: input[i]["review_title"],
-//       reviews_number: input[i]["reviews_number"],
-//       review_viewers: input[i]["review_viewers"],
-//       review: input[i]["review"],
-//       movie_description: input[i]["movie_description"]
-//     })
-//       .save()
-//       .then(() => {
-//         console.log("saved to db");
-//       })
-//       .catch(err => {
-//         console.log("there was an error", err);
-//       });
-//   }
-// };
+var addDataToDatabase = function() {
+  //change the number in here to 10mil when you acheive fast write speed
+  for (var i = 0; i < 1000; i++) {
+    console.log(i);
+    new Movies({
+      Title: faker.random.words(5),
+      Year: faker.date.past(),
+      imdbID: "tt" + faker.random.number(10000),
+      Type: faker.random.word(),
+      Poster: faker.image.imageUrl(),
+      review_average: faker.random.number(10),
+      review_count: faker.random.number(2000),
+      extra_images: faker.image.imageUrl(),
+      director: faker.name.firstName() + ' ' + faker.name.lastName(),
+      writer: faker.name.firstName() + ' ' + faker.name.lastName(),
+      release_date: faker.date.past(),
+      movie_length: faker.random.number(2) + " hour and " + faker.random.number(59) + " minutes",
+      movie_rating: faker.random.number(10),
+      actor_info: [{character_name: faker.name.firstName() + ' ' + faker.name.lastName(), actor_name: faker.name.firstName() + ' ' + faker.name.lastName()}],
+      movie_genre: faker.random.word() + '|' + faker.random.word(),
+      review_date: faker.date.past(),
+      reviewer: faker.name.firstName() + ' ' + faker.name.lastName(),
+      review_title: faker.random.words(5),
+      reviews_number: faker.random.number(2000),
+      review_viewers: faker.random.number(200),
+      review: faker.random.words(10),
+      movie_description: faker.random.words(10),
+      movie_id: i
+    })
+      .save()
+      .then(() => {
+        //console.log("saved to db");
+      })
+      .catch(err => {
+        console.log("there was an error", err);
+      });
+  }
+};
 
-// // addDataToDatabase(myData);
+addDataToDatabase();
 
 // //find data from database
 // var retrieved = function(cb) {

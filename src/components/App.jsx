@@ -20,11 +20,13 @@ class App extends React.Component {
   }
 
   retrieveMovieData() {
-    var random = Math.floor(Math.random() * 119);
+    //change the number in here to 10mil when you acheive fast write speed
+    var random = Math.floor(Math.random() * 1000);
     axios
-      .get(`/main/api/title/${random}`)
+      .get(`http://localhost:8000/api/title/${random}`)
       .then(res => {
         console.log(random);
+        console.log('this is the res', res)
         this.setState({
           movie: res.data[0]
         });
