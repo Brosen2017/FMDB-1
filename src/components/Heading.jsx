@@ -16,8 +16,9 @@ const Heading = props => {
         <div className={styles.Title}>
           {props.movie.Title}
           <span className={styles.releaseYear}>
+          
             {" ("}
-            {props.movie.release_date.slice(-4)})
+            {props.movie.release_date.slice(11, 15)})
           </span>
         </div>
         <div className={styles.detailsLine}>
