@@ -5,7 +5,8 @@ var movieData = require("./movieData.js");
 
 mongoose.connect(
   mongoUri,
-  { useNewUrlParser: true }
+  { useNewUrlParser: true,
+    poolSize: 20 }
 );
 
 var db = mongoose.connection;
