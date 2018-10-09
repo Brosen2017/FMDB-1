@@ -5,7 +5,7 @@ const MovieImages = props => {
   return (
     <div className={styles.images}>
       <div className={styles.Poster}>
-        <img src={props.movie.Poster} />
+        <img src={props.movie.Poster}/>
       </div>
       <div className={styles.imageSpacer} />
       <div className={styles.secondImage}>
