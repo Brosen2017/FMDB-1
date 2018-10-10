@@ -10,4 +10,4 @@ scenarios:
     - loop:
       - get:
           url: "/api/title/2"
-    count: 100
+      count: 100
